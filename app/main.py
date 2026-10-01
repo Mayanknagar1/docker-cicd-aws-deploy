@@ -8,7 +8,7 @@ containerization + CI/CD + cloud deployment).
 """
 
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel 
 from typing import List
 import os
 
@@ -41,6 +41,7 @@ def list_tasks():
 @app.post("/tasks", response_model=TaskOut)
 def create_task(task: Task):
     global next_id
+    
     tasks_db[next_id] = task
     out = TaskOut(id=next_id, **task.dict())
     next_id += 1
